@@ -1,6 +1,7 @@
 package net.sofwareII.backendcursojava.controllers;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,12 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import net.sofwareII.backendcursojava.models.request.UserDatailRequestModel;
 import net.sofwareII.backendcursojava.models.responses.UserRest;
+import net.sofwareII.backendcursojava.services.UserServiceInterface;
 import net.sofwareII.backendcursojava.shared.dto.UserDTO;
 
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
+
+    @Autowired
+    UserServiceInterface userService;
+
 
     @GetMapping
     public String getUser(){
@@ -23,6 +29,7 @@ public class UserController {
     
     @PostMapping
     public UserRest CreateUser(@RequestBody UserDatailRequestModel userDatails){
+
         UserRest userToReturn =new UserRest();
 
         UserDTO userDTO = new UserDTO();
@@ -33,8 +40,7 @@ public class UserController {
 
         BeanUtils.copyProperties(createdUser, userToReturn);
 
-
-        return null;
+        return userToReturn;
     }
         
 
