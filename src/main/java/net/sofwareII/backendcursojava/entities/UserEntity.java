@@ -20,7 +20,7 @@ public class UserEntity implements Serializable {
     private String userId;
 
     @Column(nullable = false, length = 50)
-    private String firsName;
+    private String firstName;
 
     @Column(nullable = false, length = 50)
     private String lastName;
@@ -48,12 +48,12 @@ public class UserEntity implements Serializable {
         this.userId = userId;
     }
 
-    public String getFirsName() {
-        return firsName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirsName(String firsName) {
-        this.firsName = firsName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
